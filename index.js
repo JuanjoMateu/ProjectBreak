@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express()
-const PORT = 3000
+require('dotenv').config()
+PORT = process.env. PORT || 4000
 
 app.get('/', (req, res) => (res.send('Proyecto BACK')))
 
