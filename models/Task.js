@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const TaskSchema = new mongoose.Schema(
     {
         title: String,
-        completed: false
+        completed: Boolean
     }, { timestamps: true }
 )
 
