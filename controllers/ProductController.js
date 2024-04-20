@@ -1,7 +1,7 @@
 const Product = require('../models/Products')
 
 const ProductController = {
-    async create(req, res) {
+    async createProduct(req, res) {
         try {
             const product = await Product.create({ ...req.body, completed: false })
             res.status(201).send(product)
@@ -9,7 +9,7 @@ const ProductController = {
             console.log(error)
         }
     },
-    async getAll(req, res) {
+    async getAllProducts(req, res) {
         try {
             const product = await Product.find()
             res.json(product)
@@ -17,12 +17,12 @@ const ProductController = {
             console.log(error)
         }
     },
-    async getAllSSR(req, res) {
+    async getAllProductsSSR(req, res) {
         try {
             const product = await Product.find()
             res.send(`
                 <h1>Todos los productos</h1>
-                ${product.map(task => {
+                ${product.map(product => {
                 return (
                     `<div>
                         <h2>${product.nombre}</h2>
@@ -38,7 +38,7 @@ const ProductController = {
             console.log(error)
         }
     },
-    async getByID(req, res) {
+    async getProductByID(req, res) {
         try {
             const id = req.params._id
             const product = await Product.findById(id)
@@ -59,13 +59,13 @@ const ProductController = {
             console.log(error)
         }
     },
-    async updateByName(req, res) {
+    async updateProductName(req, res) {
         try {
           const id = req.params._id
-          const title = req.body.title
+          const nombre = req.body.nombre
           const updateProduct = await Product.findByIdAndUpdate(
             id, {
-              title
+              nombre
             }, {new: true}
           )
           res.json(updateProduct)
