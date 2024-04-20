@@ -4,7 +4,7 @@ const app = express()
 require('dotenv').config()
 
 const PORT = process.env.PORT || 4000
-const routes = require('./routes/task')
+const routes = require('./routes/products')
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
